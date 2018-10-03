@@ -1,18 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.youbo.tvapp">
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.example.youbo.tvapp"
+    tools:ignore="MissingLeanbackLauncher">
+    <!--设置依赖leanback库相关,仅在TV上运行设置为true，在TV和phone上运行设置为false-->
+    <uses-feature
+        android:name="android.software.leanback"
+        android:required="true" />
+    <!--设置touchscreen为false，即TV app 不需要触摸-->
+    <uses-feature
+        android:name="android.hardware.touchscreen"
+        android:required="false" />
 
     <application
-        android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:allowBackup="false"
         android:label="@string/app_name"
+        android:icon="@mipmap/android_tv_banner"
+        android:logo="@mipmap/android_tv_banner"
+        android:banner="@mipmap/android_tv_banner"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Leanback">
-        <activity android:name=".MainActivity">
+        android:theme="@style/Theme.Leanback"
+        >
+        <activity android:name=".MainActivity"
+            android:label="@string/app_name"
+            android:icon="@mipmap/android_tv_banner"
+            android:logo="@mipmap/android_tv_banner">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
+                <!--显示Activity icon 在普通桌面-->
                 <category android:name="android.intent.category.LAUNCHER" />
+                <!--显示Activity icon Leanback桌面-->
+                <category android:name="android.intent.category.LEANBACK_LAUNCHER"/>
             </intent-filter>
         </activity>
     </application>
